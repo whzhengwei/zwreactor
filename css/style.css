@@ -1030,11 +1030,6 @@ ul { list-style: none; }
 
 .footer-logo { margin-bottom: 16px; }
 
-.footer-logo .logo-mark {
-  background: var(--copper);
-  color: var(--white);
-}
-
 .footer h4 {
   color: var(--white);
   font-size: 0.85rem;
