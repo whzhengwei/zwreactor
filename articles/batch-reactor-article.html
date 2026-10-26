@@ -3,25 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7 Batch Reactor Defects — Zhengwei Machinery</title>
+<title>7 Batch Reactor Defects — WEIHAI ZHENGWEI MACHINERY CO.,LTD</title>
 <meta name="description" content="Seven common batch reactor design defects and how to avoid them: agitator dead zones, jacket sizing errors, weld quality, nozzle placement and material selection mistakes.">
-<link rel="canonical" href="https://zhengweimachinery.com/articles/batch-reactor-article.html">
+<link rel="canonical" href="https://zhengweireactor.com/articles/batch-reactor-article.html">
 <style>
   :root {
-    --bg: #F2F2F2;
-    --dark: #2D2926;
-    --teal: #B8D8BE;
-    --pink: #E91E63;
-    --yellow: #FFF200;
+    --hull: #0a1628;
+    --hull-mid: #1e293b;
+    --steel: #64748b;
+    --steel-light: #94a3b8;
+    --copper: #c87941;
+    --copper-light: #d4956a;
     --white: #FFFFFF;
-    --text: #2D2926;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+    --transition: all 0.25s ease;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--bg);
+    background: var(--gray-50);
     font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui,
                  'Helvetica Neue', Arial, 'Noto Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    color: var(--text);
+    color: var(--hull);
     line-height: 1.6;
   }
   .container {
@@ -30,72 +38,82 @@
     padding: 40px 20px;
   }
   header {
-    background: var(--dark);
+    background: linear-gradient(135deg, var(--hull) 0%, var(--hull-mid) 100%);
     color: var(--white);
     padding: 60px 40px;
     margin: -40px -20px 40px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--copper), transparent);
+    opacity: 0.5;
   }
   header::after {
     content: '';
     display: block;
     width: 100px;
     height: 4px;
-    background: linear-gradient(90deg, var(--pink), var(--yellow), var(--teal));
+    background: linear-gradient(90deg, var(--copper), var(--copper-light));
     margin: 20px auto 0;
   }
   h1 {
     font-size: 2.5rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: 10px;
   }
   .subtitle {
     font-size: 1.1rem;
-    color: var(--yellow);
+    color: var(--copper-light);
     font-weight: 500;
   }
   .meta {
     font-size: 0.85rem;
-    color: var(--teal);
+    color: var(--steel-light);
     margin-top: 15px;
   }
   article {
     background: var(--white);
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-200);
   }
   h2 {
     font-size: 1.4rem;
-    color: var(--dark);
+    color: var(--hull);
     margin: 40px 0 15px;
     padding-left: 15px;
-    border-left: 4px solid var(--pink);
+    border-left: 4px solid var(--copper);
+    font-weight: 700;
   }
-  h2:first-child {
-    margin-top: 0;
-  }
+  h2:first-child { margin-top: 0; }
   p {
     margin-bottom: 15px;
     font-size: 1rem;
+    color: var(--hull);
   }
   ul {
     margin: 15px 0 15px 20px;
   }
   li {
     margin-bottom: 8px;
+    color: var(--hull);
   }
-  strong {
-    color: var(--pink);
-  }
+  strong { color: var(--hull); font-weight: 600; }
   .rule {
-    background: linear-gradient(135deg, #FFF5F5 0%, #FFF 100%);
-    border-left: 4px solid var(--pink);
+    background: linear-gradient(135deg, #FFF8F5 0%, #FFF 100%);
+    border-left: 4px solid var(--copper);
     padding: 15px 20px;
     margin: 20px 0;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: var(--hull);
   }
   .cost-table {
     width: 100%;
@@ -104,50 +122,61 @@
   }
   .cost-table td {
     padding: 12px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--gray-200);
+    color: var(--hull);
   }
-  .cost-table tr:nth-child(1) td {
-    color: var(--dark);
-  }
-  .cost-table tr:nth-child(2) td {
-    color: var(--pink);
-    font-weight: 700;
-  }
-  .cost-table tr:nth-child(3) td {
-    color: var(--dark);
-  }
+  .cost-table tr:nth-child(1) td { color: var(--hull); }
+  .cost-table tr:nth-child(2) td { color: #c2410c; font-weight: 700; }
+  .cost-table tr:nth-child(3) td { color: var(--hull); }
   .checklist {
-    background: var(--dark);
+    background: var(--hull);
     color: var(--white);
     padding: 30px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin: 30px 0;
+    border: 1px solid var(--hull-mid);
   }
   .checklist h3 {
-    color: var(--yellow);
+    color: var(--copper-light);
     margin-bottom: 15px;
     font-size: 1.2rem;
   }
   .checklist ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+  }
+  .checklist li {
+    color: var(--steel-light);
+    padding: 4px 0;
   }
   .checklist li::before {
     content: '✓ ';
-    color: var(--teal);
+    color: var(--copper);
     font-weight: 700;
     margin-right: 10px;
   }
   .scale-warning {
-    background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
+    background: linear-gradient(135deg, var(--hull) 0%, var(--hull-mid) 100%);
     color: var(--white);
     padding: 25px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin: 30px 0;
     text-align: center;
+    border: 1px solid rgba(200,121,65,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .scale-warning::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--copper), transparent);
+    opacity: 0.5;
   }
   .scale-warning h3 {
-    color: var(--yellow);
+    color: var(--copper-light);
     margin-bottom: 10px;
   }
   .scale-flow {
@@ -159,37 +188,33 @@
     font-size: 1.2rem;
   }
   .scale-flow .arrow {
-    color: var(--pink);
+    color: var(--copper);
     font-size: 1.5rem;
   }
   .scale-flow .item {
     padding: 10px 20px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.1);
   }
-  .scale-flow .down {
-    color: var(--pink);
-  }
-  .scale-flow .up {
-    color: var(--yellow);
-  }
+  .scale-flow .down { color: #f87171; }
+  .scale-flow .up { color: var(--copper-light); }
   .cover-image {
     width: 100%;
     max-width: 540px;
     margin: 0 auto 40px;
     display: block;
-    border-radius: 8px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200);
   }
   footer {
     text-align: center;
     padding: 40px 20px;
-    color: #666;
+    color: var(--steel);
     font-size: 0.9rem;
   }
-  footer strong {
-    color: var(--dark);
-  }
+  footer strong { color: var(--hull); }
   @media (max-width: 600px) {
     h1 { font-size: 1.8rem; }
     article { padding: 25px; }
@@ -202,7 +227,7 @@
   <header>
     <h1>7 Batch Reactor Defects</h1>
     <div class="subtitle">That Cost Production — A Chemical Engineer's Pre-Contract Checklist</div>
-    <div class="meta">Zhengwei Machinery · Chemical Reactor Specialists</div>
+    <div class="meta">WEIHAI ZHENGWEI MACHINERY CO.,LTD · Chemical Reactor Specialists</div>
   </header>
 
   <article>
@@ -295,10 +320,51 @@
     <p>If you're specifying one, ask the right questions before the contract is signed. It's much cheaper to change a drawing than to change a production schedule.</p>
   </article>
 
-  <footer>
-    <p><strong>Zhengwei Machinery</strong> — Chemical Reactor Specialists</p>
-    <p>Written from decades of experience in foreign trade and quality management.<br>The defects listed come from actual production reviews, not textbooks.</p>
-  </footer>
+  <!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="footer-logo">
+          <img src="../images/zhengwei-logo.jpg" alt="WEIHAI ZHENGWEI MACHINERY CO.,LTD" style="height:40px;">
+        </a>
+        <p>WEIHAI ZHENGWEI MACHINERY CO.,LTD Founded 2004. We design and build magnetic coupling reactors and complete chemical process equipment. Every unit is tested, documented, and shipped with full material traceability.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../products/industrial-reactor.html">Industrial Reactor</a></li>
+          <li><a href="../products/hydrogenation-reactor.html">Hydrogenation Reactor</a></li>
+          <li><a href="../products/non-ferrous-reactor.html">Non-Ferrous Metal Reactor</a></li>
+          <li><a href="../products/pilot-reactor.html">Pilot Scale Reactor</a></li>
+          <li><a href="../products/lab-reactor.html">Laboratory Reactor</a></li>
+          <li><a href="../products/lift-flip-reactor.html">Lift &amp; Flip Reactor</a></li>
+          <li><a href="../products/nylon66-resin-reactor.html">Nylon 66 Resin Reactor</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../certificates.html">Certifications</a></li>
+          <li><a href="../cases.html">Project Cases</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <address>
+          <p>Zaobu Industrial Park, Gushan Town,<br>Weihai Economic &amp; Technological Development Zone,<br>Shandong Province, China 264207</p>
+          <p>📞 +86 135 6213 9566<br>📠 Fax: +86-631-5385819</p>
+          <p>zwxsb-1@whzhengweihj.com<br>zwfw@whzhengweihj.com (after-sales)</p>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2004–2026 WEIHAI ZHENGWEI MACHINERY CO.,LTD All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 </div>
 </body>
 </html>

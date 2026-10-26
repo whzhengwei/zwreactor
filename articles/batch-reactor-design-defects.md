@@ -119,4 +119,4 @@ If you're specifying one, ask the right questions before the contract is signed.
 
 ---
 
-*Written by Zhengwei Machinery — chemical reactor specialists with decades of experience in foreign trade and quality management. The defects listed here come from actual production reviews, not textbooks.*
+*Written by WEIHAI ZHENGWEI MACHINERY CO.,LTD — chemical reactor specialists with decades of experience in foreign trade and quality management. The defects listed here come from actual production reviews, not textbooks.*

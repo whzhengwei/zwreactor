@@ -3,27 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jacket Design, Material Selection & Seal Technology — Zhengwei Machinery</title>
+<title>Jacket Design, Material Selection & Seal Technology — WEIHAI ZHENGWEI MACHINERY CO.,LTD</title>
 <meta name="description" content="Essential guide to chemical reactor jacket design, material selection, and mechanical seal technology. Compiled from global engineering forums: Eng-Tips, Cheresources, Reddit, and Control.com.">
-<link rel="canonical" href="https://zhengweimachinery.com/articles/jacket-material-seal-guide.html">
+<link rel="canonical" href="https://zhengweireactor.com/articles/jacket-material-seal-guide.html">
 <style>
   :root {
-    --bg: #F2F2F2;
-    --dark: #2D2926;
-    --teal: #B8D8BE;
-    --pink: #E91E63;
-    --yellow: #FFF200;
+    --hull: #0a1628;
+    --hull-mid: #1e293b;
+    --steel: #64748b;
+    --steel-light: #94a3b8;
+    --copper: #c87941;
+    --copper-light: #d4956a;
     --white: #FFFFFF;
-    --text: #2D2926;
-    --muted: #666;
-    --border: #e0e0e0;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --border: #e2e8f0;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+    --transition: all 0.25s ease;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--bg);
+    background: var(--gray-50);
     font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui,
                  'Helvetica Neue', Arial, 'Noto Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    color: var(--text);
+    color: var(--hull);
     line-height: 1.6;
   }
   .container {
@@ -32,71 +39,81 @@
     padding: 40px 20px;
   }
   header {
-    background: var(--dark);
+    background: linear-gradient(135deg, var(--hull) 0%, var(--hull-mid) 100%);
     color: var(--white);
     padding: 60px 40px;
     margin: -40px -20px 40px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--copper), transparent);
+    opacity: 0.5;
   }
   header::after {
     content: '';
     display: block;
     width: 100px;
     height: 4px;
-    background: linear-gradient(90deg, var(--pink), var(--yellow), var(--teal));
+    background: linear-gradient(90deg, var(--copper), var(--copper-light));
     margin: 20px auto 0;
   }
   h1 {
     font-size: 2.2rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: 10px;
   }
   .subtitle {
     font-size: 1.1rem;
-    color: var(--yellow);
+    color: var(--copper-light);
     font-weight: 500;
   }
   .meta {
     font-size: 0.85rem;
-    color: var(--teal);
+    color: var(--steel-light);
     margin-top: 15px;
   }
   article {
     background: var(--white);
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-200);
   }
   h2 {
     font-size: 1.4rem;
-    color: var(--dark);
+    color: var(--hull);
     margin: 40px 0 15px;
     padding-left: 15px;
-    border-left: 4px solid var(--pink);
+    border-left: 4px solid var(--copper);
+    font-weight: 700;
   }
-  h2:first-child {
-    margin-top: 0;
-  }
+  h2:first-child { margin-top: 0; }
   h3 {
     font-size: 1.1rem;
-    color: var(--dark);
+    color: var(--hull);
     margin: 30px 0 12px;
+    font-weight: 700;
   }
   p {
     margin-bottom: 15px;
     font-size: 1rem;
+    color: var(--hull);
   }
   ul, ol {
     margin: 15px 0 15px 20px;
   }
   li {
     margin-bottom: 8px;
+    color: var(--hull);
   }
-  strong {
-    color: var(--pink);
-  }
+  strong { color: var(--hull); font-weight: 600; }
   table {
     width: 100%;
     border-collapse: collapse;
@@ -108,43 +125,49 @@
     padding: 10px 12px;
     text-align: left;
     vertical-align: top;
+    color: var(--hull);
   }
   th {
-    background: var(--dark);
+    background: var(--hull);
     color: var(--white);
     font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
   tr:nth-child(even) td {
-    background: #fafafa;
+    background: var(--gray-50);
   }
   .rule {
-    background: linear-gradient(135deg, #FFF5F5 0%, #FFF 100%);
-    border-left: 4px solid var(--pink);
+    background: linear-gradient(135deg, #FFF8F5 0%, #FFF 100%);
+    border-left: 4px solid var(--copper);
     padding: 15px 20px;
     margin: 20px 0;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: var(--hull);
   }
   .rule-warn {
-    background: linear-gradient(135deg, #FFF8E1 0%, #FFF 100%);
-    border-left: 4px solid var(--yellow);
+    background: linear-gradient(135deg, #FFF8F5 0%, #FFF 100%);
+    border-left: 4px solid var(--copper);
   }
   .rule-danger {
-    background: linear-gradient(135deg, #FFEBEE 0%, #FFF 100%);
-    border-left: 4px solid #f44336;
+    background: linear-gradient(135deg, #FFF8F5 0%, #FFF 100%);
+    border-left: 4px solid #c2410c;
   }
   .rule-success {
-    background: linear-gradient(135deg, #E8F5E9 0%, #FFF 100%);
-    border-left: 4px solid #4caf50;
+    background: linear-gradient(135deg, #F0FDF4 0%, #FFF 100%);
+    border-left: 4px solid #15803d;
   }
   .checklist {
-    background: var(--dark);
+    background: var(--hull);
     color: var(--white);
     padding: 30px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin: 30px 0;
+    border: 1px solid var(--hull-mid);
   }
   .checklist h3 {
-    color: var(--yellow);
+    color: var(--copper-light);
     margin-bottom: 15px;
     font-size: 1.2rem;
   }
@@ -153,9 +176,13 @@
     padding: 0;
     margin: 0;
   }
+  .checklist li {
+    color: var(--steel-light);
+    padding: 4px 0;
+  }
   .checklist li::before {
     content: '✓ ';
-    color: var(--teal);
+    color: var(--copper);
     font-weight: 700;
     margin-right: 10px;
   }
@@ -163,36 +190,37 @@
     background: #1e1e1e;
     color: #7ee787;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
     margin: 20px 0;
     overflow-x: auto;
+    border: 1px solid var(--hull-mid);
   }
   .decision-tree {
-    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-    border: 2px solid var(--border);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin: 20px 0;
   }
   .decision-tree strong {
-    color: var(--dark);
+    color: var(--hull);
   }
   .forum-quote {
-    background: #f8f9fa;
-    border-left: 4px solid var(--pink);
+    background: var(--gray-50);
+    border-left: 4px solid var(--copper);
     padding: 15px 20px;
     margin: 20px 0;
     font-style: italic;
-    color: var(--muted);
+    color: var(--steel);
   }
   .forum-quote cite {
     display: block;
     margin-top: 10px;
     font-style: normal;
     font-size: 0.85rem;
-    color: var(--dark);
+    color: var(--hull);
   }
   .tag {
     display: inline-block;
@@ -202,18 +230,19 @@
     font-weight: 600;
     margin-right: 5px;
   }
-  .tag-warn { background: #fff3cd; color: #856404; }
-  .tag-danger { background: #f8d7da; color: #721c24; }
-  .tag-success { background: #d4edda; color: #155724; }
-  .tag-info { background: #d1ecf1; color: #0c5460; }
+  .tag-warn { background: #ffedd5; color: #c2410c; }
+  .tag-danger { background: #fee2e2; color: #b91c1c; }
+  .tag-success { background: #dcfce7; color: #15803d; }
+  .tag-info { background: #dbeafe; color: #1e40af; }
   .source-list {
-    background: #f8f9fa;
+    background: var(--gray-50);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin: 30px 0;
+    border: 1px solid var(--gray-200);
   }
   .source-list h3 {
-    color: var(--dark);
+    color: var(--hull);
     margin-bottom: 15px;
   }
   .source-list ul {
@@ -221,9 +250,10 @@
   }
   .source-list li {
     margin-bottom: 8px;
+    color: var(--hull);
   }
   .source-list a {
-    color: var(--pink);
+    color: var(--copper);
     text-decoration: none;
   }
   .source-list a:hover {
@@ -238,12 +268,10 @@
   footer {
     text-align: center;
     padding: 40px 20px;
-    color: #666;
+    color: var(--steel);
     font-size: 0.9rem;
   }
-  footer strong {
-    color: var(--dark);
-  }
+  footer strong { color: var(--hull); }
   @media (max-width: 600px) {
     h1 { font-size: 1.6rem; }
     article { padding: 25px; }
@@ -257,7 +285,7 @@
   <header>
     <h1>Jacket, Material & Seal</h1>
     <div class="subtitle">Critical Design Decisions Compiled from Global Engineering Forums</div>
-    <div class="meta">Zhengwei Machinery · Chemical Reactor Specialists</div>
+    <div class="meta">WEIHAI ZHENGWEI MACHINERY CO.,LTD · Chemical Reactor Specialists</div>
   </header>
 
   <article>
@@ -697,10 +725,51 @@
     <p>My job is to listen, synthesize, and bring that knowledge to my clients before the contract is signed. Because it's always cheaper to change a drawing than to change a production schedule.</p>
   </article>
 
-  <footer>
-    <p><strong>Zhengwei Machinery</strong> — Chemical Reactor Specialists</p>
-    <p>Compiled from decades of foreign trade experience and global engineering community discussions.<br>The insights here come from real-world failures, not theory.</p>
-  </footer>
+  <!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="footer-logo">
+          <img src="../images/zhengwei-logo.jpg" alt="WEIHAI ZHENGWEI MACHINERY CO.,LTD" style="height:40px;">
+        </a>
+        <p>WEIHAI ZHENGWEI MACHINERY CO.,LTD Founded 2004. We design and build magnetic coupling reactors and complete chemical process equipment. Every unit is tested, documented, and shipped with full material traceability.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../products/industrial-reactor.html">Industrial Reactor</a></li>
+          <li><a href="../products/hydrogenation-reactor.html">Hydrogenation Reactor</a></li>
+          <li><a href="../products/non-ferrous-reactor.html">Non-Ferrous Metal Reactor</a></li>
+          <li><a href="../products/pilot-reactor.html">Pilot Scale Reactor</a></li>
+          <li><a href="../products/lab-reactor.html">Laboratory Reactor</a></li>
+          <li><a href="../products/lift-flip-reactor.html">Lift &amp; Flip Reactor</a></li>
+          <li><a href="../products/nylon66-resin-reactor.html">Nylon 66 Resin Reactor</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../certificates.html">Certifications</a></li>
+          <li><a href="../cases.html">Project Cases</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <address>
+          <p>Zaobu Industrial Park, Gushan Town,<br>Weihai Economic &amp; Technological Development Zone,<br>Shandong Province, China 264207</p>
+          <p>📞 +86 135 6213 9566<br>📠 Fax: +86-631-5385819</p>
+          <p>zwxsb-1@whzhengweihj.com<br>zwfw@whzhengweihj.com (after-sales)</p>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2004–2026 WEIHAI ZHENGWEI MACHINERY CO.,LTD All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 </div>
 </body>
 </html>

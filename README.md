@@ -1,4 +1,4 @@
-# Zhengwei Machinery — New Website (SEO-Optimized)
+# WEIHAI ZHENGWEI MACHINERY CO.,LTD — New Website (SEO-Optimized)
 
 **Status:** Static site ready for deployment to Cloudflare Pages  
 **Last Updated:** 2026-09-23  
@@ -117,12 +117,12 @@ git push -u origin main
 
 ### Option 3: Use existing domain
 Once deployed, update DNS:
-- Point your new domain (zhengweimachinery.com) to Cloudflare
+- Point your new domain (zhengweireactor.com) to Cloudflare
 - Add CNAME or A record as instructed by Cloudflare
 
 ## Next Steps
 
-1. **Register new domain** — zhengweimachinery.com is available (~$12/year)
+1. **Register new domain** — zhengweireactor.com is available (~$12/year)
 2. **Set up Cloudflare Pages** — connect and deploy
 3. **Configure DNS** — point domain to Cloudflare
 4. **Add SSL certificate** — Cloudflare provides free SSL
