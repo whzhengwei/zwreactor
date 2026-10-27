@@ -335,7 +335,8 @@ ul { list-style: none; }
 .nav-backdrop {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
+  height: 100vh;
   background: rgba(10, 22, 40, 0.5);
   z-index: 997;
   opacity: 0;
@@ -1097,7 +1098,8 @@ ul { list-style: none; }
 
   .nav {
     position: fixed;
-    inset: 0;
+    top: 0; right: 0; bottom: 0; left: 0;
+    height: 100vh;
     padding-top: calc(72px + env(safe-area-inset-top));
     padding-left: 20px;
     padding-right: 20px;
