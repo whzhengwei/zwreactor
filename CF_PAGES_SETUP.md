@@ -1,51 +1,79 @@
-# Cloudflare Pages 部署说明
+# Cloudflare Pages 配置说明
 
-## 已配置的自动化部署
+**站点：** https://zhengweireactor.com
+**部署方式：** 手动上传（直接上传 zip，无需 GitHub Actions）
 
-GitHub 推送 `main` 分支时，会自动部署到 Cloudflare Pages。
+---
 
-## GitHub Secrets 设置
+## 当前配置状态
 
-需要在 GitHub 仓库设置中添加以下 Secrets：
+| 项目 | 状态 |
+|------|------|
+| 域名 zhengweireactor.com | ✅ 已绑定 |
+| SSL 证书 | ✅ Cloudflare 自动签发 |
+| 站点项目 | Cloudflare Pages → 已创建 |
+| GitHub Actions | ❌ 未使用（采用直接上传方式） |
 
-1. 进入仓库 → **Settings** → **Secrets and variables** → **Actions**
-2. 点击 **New repository secret**，添加：
+---
 
-| Secret 名称 | 值 | 说明 |
-|-------------|-----|------|
-| `CLOUDFLARE_API_TOKEN` | 你的 API Token | Cloudflare API Token（需 Pages Edit 权限）|
-| `CLOUDFLARE_ACCOUNT_ID` | 你的 Account ID | Cloudflare 账户 ID |
+## 手动部署步骤
 
-### 获取 Account ID
-- 登录 Cloudflare Dashboard
-- 点击右上角账户图标 → **Account ID**
-- 或在 URL 中看到：`dash.cloudflare.com/<account-id>/...`
+1. 登录 https://dash.cloudflare.com
+2. **Workers & Pages** → **Create** → **Pages** → **Upload assets manually**
+3. 选择 `F:\zw` 文件夹的压缩文件（排除 `.git` 目录）
+4. 构建命令留空，输出目录填 `./`
+5. 点击 **Deploy site**
 
-### 创建 API Token
-1. https://dash.cloudflare.com/profile/api-tokens
-2. **Create Token** → **Custom Token**
-3. Token name: `Cloudflare Pages Deploy`
-4. Permissions:
-   - **Account** → **Cloudflare Pages** → **Edit**
-5. **Continue to summary** → **Create Token**
+每次更新内容后重复上述步骤即可。
 
-## 部署流程
+---
 
+## 域名与 DNS
+
+Cloudflare Dashboard → **DNS** → **Records**：
+
+| 类型 | 名称 | 内容 | TTL |
+|------|------|------|-----|
+| CNAME | www | `*.pages.dev` 分配的域名 | Auto |
+| A | @ | Cloudflare 提供的 IP（或 CNAME 到 pages.dev） | Auto |
+
+SSL/TLS 模式建议设为 **Full** 或 **Full (strict)**。
+
+---
+
+## 备用方案：Git 自动部署
+
+如需改为 Git 触发自动部署，可参考原 GitHub Workflow：
+
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy to Cloudflare Pages
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: zhengwei-machinery
+          directory: .
 ```
-git push origin main
-    ↓
-GitHub Actions 自动触发
-    ↓
-部署到 Cloudflare Pages
-    ↓
-访问 https://zhengwei-machinery.pages.dev
-```
 
-## 手动触发
+需配置的 Secrets：
+- `CLOUDFLARE_API_TOKEN` — Cloudflare API Token（Pages Edit 权限）
+- `CLOUDFLARE_ACCOUNT_ID` — Cloudflare Account ID
 
-在 GitHub Actions 页面点击 **Run workflow** 即可手动部署。
+> ⚠️ 当前采用直接上传方式，此 workflow 仅作参考，暂不启用。
 
-## 验证部署状态
+---
 
-- GitHub Actions: https://github.com/whzhengwei/zw/actions
-- Cloudflare Pages: https://dash.cloudflare.com/pages/view/zhengwei-machinery
+## 验证部署
+
+- Cloudflare Pages：https://dash.cloudflare.com/pages → 查看部署日志
+- 网站访问：https://zhengweireactor.com
+- Sitemap：https://zhengweireactor.com/sitemap.xml（31 个 URL）
