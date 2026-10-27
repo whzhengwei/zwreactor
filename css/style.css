@@ -1166,8 +1166,10 @@ ul { list-style: none; }
   .section { padding: 64px 0; }
   .section-header { margin-bottom: 40px; }
 
-  .nav-link { padding: 14px 16px; min-height: 48px; display: flex; align-items: center; }
-  .dropdown-menu li a { padding: 14px 14px; min-height: 48px; display: flex; align-items: center; }
+  .nav-link { padding: 18px 16px; min-height: 56px; display: flex; align-items: center; font-size: 1.05rem; }
+  .dropdown-menu { padding: 0 0 0 20px; }
+  .dropdown-menu li a { padding: 18px 16px; min-height: 56px; display: flex; align-items: center; font-size: 1.02rem; border-bottom: 1px solid var(--gray-100); }
+  .dropdown-menu li:last-child a { border-bottom: none; }
   .btn { padding: 16px 28px; min-height: 48px; }
 }
 
