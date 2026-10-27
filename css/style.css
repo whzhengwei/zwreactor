@@ -1189,7 +1189,6 @@ ul { list-style: none; }
 @supports (padding-top: env(safe-area-inset-top)) {
   .header { padding-top: env(safe-area-inset-top); }
   .header-inner { height: calc(72px + env(safe-area-inset-top)); }
-  .nav { top: calc(72px + env(safe-area-inset-top)); }
   
   body { padding-bottom: env(safe-area-inset-bottom); }
 }
