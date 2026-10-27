@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jacket vs Internal Coil — Reactor Heat Transfer Design Guide | WEIHAI ZHENGWEI</title>
+<meta name="description" content="Semi-coil jackets, full jackets, dome jackets, internal coils — each has different heat transfer performance and cost. Learn how to choose the right heat transfer design for your reactor.">
+<meta name="keywords" content="reactor jacket design, internal cooling coil, semi-coil jacket, heat transfer reactor China, reactor heating design">
+<link rel="canonical" href="https://zhengweireactor.com/articles/jacket-vs-coil-heat-transfer.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Jacket vs Internal Coil Heat Transfer","description":"How to choose between jacket and internal coil heat transfer for your reactor.","author":{"@type":"Organization","name":"WEIHAI ZHENGWEI MACHINERY CO.,LTD"},"datePublished":"2026-10-26"}
+</script>
+<style>
+:root{--hull:#0a1628;--hull-mid:#1e293b;--steel:#64748b;--steel-light:#94a3b8;--copper:#c87941;--copper-light:#d4956a;--white:#fff;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--radius:8px;--radius-lg:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--gray-50);font-family:Roboto,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:var(--hull);line-height:1.7}
+.container{max-width:800px;margin:0 auto;padding:40px 20px}
+header{background:linear-gradient(135deg,#8b5cf6 0%,#a78bfa 100%);color:var(--white);padding:60px 40px;margin:-40px -20px 40px;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);opacity:0.5}
+header::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--copper),var(--copper-light));margin:20px auto 0}
+h1{font-size:2.2rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:10px}
+.subtitle{font-size:1.05rem;color:rgba(255,255,255,0.85);font-weight:500}
+.meta{font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:15px}
+article{background:var(--white);padding:40px;border-radius:var(--radius-lg);box-shadow:0 1px 3px rgba(0,0,0,0.08);border:1px solid var(--gray-200)}
+h2{font-size:1.35rem;color:var(--hull);margin:36px 0 14px;padding-left:15px;border-left:4px solid #8b5cf6;font-weight:700}
+h2:first-child{margin-top:0}
+p{margin-bottom:14px;font-size:1rem;color:var(--hull)}
+ul{margin:12px 0 16px 20px}
+li{margin-bottom:6px;color:var(--hull)}
+strong{color:var(--hull);font-weight:600}
+.rule{background:linear-gradient(135deg,#F5F3FF 0%,#fff 100%);border-left:4px solid #8b5cf6;padding:15px 20px;margin:20px 0;border-radius:0 var(--radius) var(--radius) 0;color:var(--hull);font-size:0.95rem}
+table{width:100%;border-collapse:collapse;margin:20px 0}
+td{padding:12px;border-bottom:1px solid var(--gray-200);color:var(--hull)}
+tr:nth-child(2) td{color:#7c3aed;font-weight:700}
+.cta-box{background:linear-gradient(135deg,var(--hull) 0%,var(--hull-mid) 100%);color:var(--white);padding:32px;border-radius:var(--radius-lg);margin:32px 0;text-align:center}
+.cta-box p{color:var(--steel-light);margin-bottom:20px}
+.cta-box a{display:inline-block;padding:12px 28px;background:#8b5cf6;color:var(--white);border-radius:var(--radius);text-decoration:none;font-weight:600;transition:all 0.25s ease}
+.cta-box a:hover{background:#7c3aed}
+.footer-nav{margin-top:40px;padding:20px 0;border-top:1px solid var(--gray-200);text-align:center}
+.footer-nav a{color:#8b5cf6;text-decoration:none;font-weight:600;margin:0 12px}
+.footer{background:var(--hull);color:var(--steel-light);padding:48px 0 24px;margin-top:40px}
+.footer .container{max-width:1200px}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.footer-col h4{color:var(--white);font-size:0.9rem;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
+.footer-col ul{list-style:none;padding:0}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:var(--steel-light);text-decoration:none;font-size:0.9rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--copper-light)}
+.footer-col address{font-style:normal;font-size:0.88rem;line-height:1.8}
+.footer-bottom{border-top:1px solid var(--hull-mid);margin-top:32px;padding-top:24px;text-align:center;font-size:0.85rem}
+@media(max-width:768px){.footer-grid{grid-template-columns:repeat(2,1fr)}h1{font-size:1.7rem}article{padding:24px}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}.footer-nav a{display:block;margin:8px 0}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Jacket vs Internal Coil Heat Transfer</h1>
+    <div class="subtitle">Heat Transfer &middot; 7 min read</div>
+    <div class="meta">WEIHAI ZHENGWEI MACHINERY CO.,LTD &middot; Chemical Reactor Specialists</div>
+  </div>
+</header>
+
+<article>
+  <p>Heat transfer is where most reactor design mistakes happen. A client says &ldquo;we need cooling&rdquo; and the supplier provides a standard jacket &mdash; looking adequate on paper, insufficient in practice. The reaction temperature runs away, batch cycle time doubles, and the client ends up wishing they had asked for internal coils.</p>
+  <p>The choice between jacket and internal coil is not just about heat transfer area. It affects cleaning, maintenance, cost, and operational flexibility. Let us walk through each option.</p>
+
+  <h2>1. Full Jacket &mdash; Simple, But Limited</h2>
+  <p>A full jacket wraps the entire vessel shell and heads. It is the simplest design and the cheapest to manufacture. Heat transfer coefficient is moderate &mdash; typically 200-400 W/m2.K depending on the media (steam, thermal oil, or cooling water).</p>
+  <p>The limitation: the jacket creates a dead zone at the bottom of the vessel where the jacket does not reach. For viscous materials or slurries, this means poor heat transfer where you need it most &mdash; near the discharge outlet.</p>
+  <div class="rule"><strong>Full jacket is suitable for:</strong> Low-viscosity media, moderate heat duties, batch processes with long residence times, and applications where budget is the primary constraint.</div>
+
+  <h2>2. Semi-Coil Jacket &mdash; Better Heat Transfer, Better Coverage</h2>
+  <p>A semi-coil jacket uses a helical coil welded to the vessel shell, creating channels that guide heat transfer media across the full vessel height. This eliminates the bottom dead zone and increases heat transfer coefficient by 30-50% compared to a full jacket.</p>
+  <p>Semi-coil jackets are the most common choice for chemical reactors. They provide good heat transfer, are relatively easy to clean, and do not occupy internal volume.</p>
+  <div class="rule"><strong>Semi-coil is suitable for:</strong> Most chemical reactions, moderate-to-high heat duties, media with moderate viscosity, and processes requiring both heating and cooling.</div>
+
+  <h2>3. Internal Cooling Coils &mdash; Maximum Heat Transfer, Maximum Trade-offs</h2>
+  <p>Internal coils provide the highest heat transfer area per unit volume. For highly exothermic reactions (polymerization, hydrogenation, nitration), internal coils may be the only way to remove heat fast enough.</p>
+  <p>But internal coils come with trade-offs:</p>
+  <ul>
+    <li>They occupy internal volume, reducing usable capacity by 10-20%</li>
+    <li>They create dead zones and make cleaning more difficult</li>
+    <li>They can interfere with agitator flow patterns</li>
+    <li>Coil rupture is a serious failure mode &mdash; hard to detect and repair in service</li>
+  </ul>
+
+  <h2>4. Dome Jacket &mdash; For Top-End Heat Transfer</h2>
+  <p>Some reactors use a separate jacket on the dome (head) in addition to the shell jacket. The dome often requires more precise temperature control because it is closest to the vapor space and the feed inlet.</p>
+  <p>Dome jackets are common in pharma and fine chemical applications where temperature uniformity is critical.</p>
+
+  <h2>5. How to Decide &mdash; The Key Question</h2>
+  <p>The answer depends on your reaction kinetics &mdash; specifically, how much heat your reaction generates per unit time. If you can share your reaction enthalpy and batch cycle data, we can calculate whether your jacket is adequate or whether you need internal coils, a different coil layout, or an external heat exchanger loop.</p>
+  <div class="rule"><strong>Always calculate:</strong> Q = U x A x dT. Do not rely on rules of thumb or &ldquo;standard&rdquo; jacket sizes. Your reaction does not follow standard.</div>
+
+  <div class="cta-box">
+    <p><strong>Send us your reaction enthalpy and batch cycle data. We will calculate whether your proposed heat transfer design is adequate &mdash; before you pay for the wrong one.</strong></p>
+    <a href="../reactor-inquiry-form.html">Request a Quote</a>
+  </div>
+</article>
+
+<div class="footer-nav">
+  <a href="../index.html">Home</a>
+  <a href="../products/industrial-reactor.html">Products</a>
+  <a href="../cases.html">Cases</a>
+  <a href="../industries.html">Industries</a>
+  <a href="../services.html">Services</a>
+  <a href="../articles.html">All Articles</a>
+  <a href="../contact.html">Contact</a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html"><img src="../images/zhengwei-logo.jpg" alt="WEIHAI ZHENGWEI" style="height:40px;opacity:0.9"></a>
+        <p style="margin-top:12px;font-size:0.88rem;line-height:1.7">WEIHAI ZHENGWEI MACHINERY CO.,LTD Founded 2004. We design and build magnetic coupling reactors and complete chemical process equipment.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../products/industrial-reactor.html">Industrial Reactor</a></li>
+          <li><a href="../products/hydrogenation-reactor.html">Hydrogenation Reactor</a></li>
+          <li><a href="../products/non-ferrous-reactor.html">Non-Ferrous Metal Reactor</a></li>
+          <li><a href="../products/pilot-reactor.html">Pilot Scale Reactor</a></li>
+          <li><a href="../products/lab-reactor.html">Laboratory Reactor</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../certificates.html">Certifications</a></li>
+          <li><a href="../cases.html">Project Cases</a></li>
+          <li><a href="../industries.html">Industries</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../sustainability.html">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <address>
+          <p>Zaobu Industrial Park, Gushan Town,<br>Weihai Economic &amp; Technological Development Zone,<br>Shandong Province, China 264207</p>
+          <p>Phone: +86 135 6213 9566</p>
+          <p>zwxsb-1@whzhengweihj.com</p>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2004-2026 WEIHAI ZHENGWEI MACHINERY CO.,LTD All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
