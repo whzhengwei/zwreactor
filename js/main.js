@@ -58,36 +58,19 @@ nav?.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// Touch-friendly: tap dropdown arrow to toggle on mobile
-if (isMobile()) {
+// Touch-friendly: prevent double-tap zoom on dropdown links (desktop only)
+if (!isMobile()) {
   dropdowns.forEach(dropdown => {
     const link = dropdown.querySelector(':scope > .nav-link');
-    if (link) {
-      link.addEventListener('click', (e) => {
+    if (link && !link.hasAttribute('data-touch-listener')) {
+      link.setAttribute('data-touch-listener', 'true');
+      link.addEventListener('touchstart', (e) => {
         e.preventDefault();
         dropdown.classList.toggle('open');
-      });
+      }, { passive: false });
     }
   });
 }
-
-// Toggle dropdown on touch devices
-dropdowns.forEach(dropdown => {
-  const link = dropdown.querySelector(':scope > .nav-link');
-  if (link && !link.hasAttribute('data-touch-listener')) {
-    link.setAttribute('data-touch-listener', 'true');
-    link.addEventListener('touchstart', (e) => {
-      if (isMobile()) {
-        e.preventDefault();
-        // Close other dropdowns first
-        dropdowns.forEach(d => {
-          if (d !== dropdown) d.classList.remove('open');
-        });
-        dropdown.classList.toggle('open');
-      }
-    }, { passive: false });
-  }
-});
 
 // Header scroll effect
 const header = document.getElementById('header');
