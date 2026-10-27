@@ -32,6 +32,91 @@
 - **Language:** English
 - **Sitemap:** https://zhengweireactor.com/articles/pharma-export-guide.html (priority 0.6)
 
+### 4. Material Selection Guide — 304 vs 316L vs Duplex
+- **Path:** `articles/material-selection-guide.html`
+- **Topic:** How to choose the right stainless steel for your reactor based on medium, temperature, and chloride content
+- **Key points covered:**
+  - 304 limitations: chloride stress corrosion cracking above 60°C
+  - 316L as the standard choice and when it's sufficient
+  - Duplex 2205 for high-chloride, high-temperature service
+  - Hastelloy and titanium for extreme corrosion environments
+  - The cost trap: cheaper material = more expensive outcome
+- **Language:** English
+- **Sitemap:** https://zhengweireactor.com/articles/material-selection-guide.html (priority 0.7)
+
+### 5. Magnetic Coupling Seal vs Packing Seal
+- **Path:** `articles/magnetic-vs-packing-seal.html`
+- **Topic:** When seal type is a safety-critical decision, not a budget choice
+- **Key points covered:**
+  - Packing seal hidden costs: maintenance, product loss, environmental risk
+  - Magnetic coupling zero-leakage advantage and total cost of ownership
+  - When packing seals are acceptable (non-toxic, low-pressure, moderate temp)
+  - When magnetic coupling is required (toxic, flammable, volatile, pharma)
+  - Hydrogen service: packing seals are never acceptable
+- **Language:** English
+- **Sitemap:** https://zhengweireactor.com/articles/magnetic-vs-packing-seal.html (priority 0.7)
+
+### 6. Jacket vs Internal Coil Heat Transfer
+- **Path:** `articles/jacket-vs-coil-heat-transfer.html`
+- **Topic:** How to choose the right heat transfer design for your reactor
+- **Key points covered:**
+  - Full jacket: simple but limited, dead zone at bottom
+  - Semi-coil jacket: 30-50% better heat transfer, most common choice
+  - Internal coils: maximum heat transfer but occupy volume, harder to clean
+  - Dome jacket: for precise temperature control in pharma/fine chemical
+  - The calculation: Q = U × A × ΔT — don't rely on rules of thumb
+- **Language:** English
+- **Sitemap:** https://zhengweireactor.com/articles/jacket-vs-coil-heat-transfer.html (priority 0.7)
+
+### 7. Hydrogenation Reactor Safety
+- **Path:** `articles/hydrogenation-reactor-safety.html`
+- **Topic:** Critical design considerations for high-pressure hydrogen service
+- **Key points covered:**
+  - Hydrogen embrittlement and material selection (316L limits, modified compositions)
+  - Seal selection: magnetic coupling mandatory, packing seals forbidden
+  - Safety systems: relief valve, rupture disc, H2 detector, N2 purging, quench
+  - Design pressure: accounting for runaway, thermal expansion, fire exposure
+  - Welding requirements: HIC testing, higher NDT ratios, PWHT, hardness testing
+- **Language:** English
+- **Sitemap:** https://zhengweireactor.com/articles/hydrogenation-reactor-safety.html (priority 0.7)
+
+### 8. Scale-Up Reactor Process
+- **Path:** `articles/scale-up-reactor-process.html`
+- **Topic:** What changes when you scale from lab to production — and what doesn't
+- **Key points covered:**
+  - Geometric similarity: the foundation of proper scale-up
+  - Mixing time increases non-linearly (30 sec → 5-10 min)
+  - Heat transfer coefficient drops as surface-area-to-volume ratio decreases
+  - Mass transfer limitations in gas-liquid reactions at scale
+  - When a pilot reactor is recommended (not optional for exothermic reactions)
+  - Scale-up checkpoint table: lab → pilot → production parameters
+- **Language:** English
+- **Sitemap:** https://zhengweireactor.com/articles/scale-up-reactor-process.html (priority 0.7)
+
+### 9. Reactor Maintenance Guide
+- **Path:** `articles/reactor-maintenance-guide.html`
+- **Topic:** Preventive maintenance schedule to extend equipment life and prevent downtime
+- **Key points covered:**
+  - Daily checks: motor current, seal area, temperature/pressure gauges, lubrication
+  - Weekly checks: shaft alignment, seal face inspection, instrument connections
+  - Monthly maintenance: lubrication, calibration, jacket inspection, blade condition
+  - Annual inspection: hydrostatic test, internal inspection, NDT, seal replacement
+  - Seal replacement intervals: 12-24 months for mechanical seals, annual for magnetic
+  - Maintenance record-keeping template and regulatory audit documentation
+- **Language:** English
+- **Sitemap:** https://zhengweireactor.com/articles/reactor-maintenance-guide.html (priority 0.7)
+
+### 10. Sustainability Page
+- **Path:** `sustainability.html`
+- **Topic:** How ZW reactor design supports sustainable chemical processing
+- **Key sections:**
+  - Three pillars: Energy Efficiency, Equipment Longevity, Waste Reduction
+  - Real impact table: standard vs optimized design with annual savings estimates
+  - Material selection as a sustainability decision (corrosion allowance, MTR, surface protection)
+  - Documentation for sustainability audits
+- **Language:** English
+- **Sitemap:** https://zhengweireactor.com/sustainability.html (priority 0.7)
+
 ---
 
 ## SEO Keywords per Article
@@ -74,4 +159,4 @@
 
 - `README.md` — Full site overview
 - `DEPLOY.md` — Deployment instructions
-- `sitemap.xml` — All 31 indexed URLs including these 3 articles
+| `sitemap.xml` — All 44 indexed URLs including these 9 articles |
