@@ -1140,7 +1140,7 @@ ul { list-style: none; }
   .nav-dropdown.open > .dropdown-menu { display: block; }
 
   .hero { min-height: auto; overflow: visible; }
-  .hero-content { padding: 120px 0 72px; }
+  .hero .hero-content { padding: 120px 16px 72px; }
   .hero-spec-strip {
     flex-wrap: wrap;
     gap: 16px;
