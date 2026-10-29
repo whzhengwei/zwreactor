@@ -18,14 +18,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 静态站点无需构建：只把真正要发布的文件挑到 dist/，
+      # 避免把 .git / .github / 脚本 / Markdown 说明文档当成静态资源上传。
+      - name: Stage static files
+        run: |
+          mkdir -p dist
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='dist' \
+            --exclude='scripts' \
+            --exclude='*.md' \
+            --exclude='*.py' \
+            ./ dist/
+          echo "--- staged files ---"
+          find dist -type f | wc -l
+          du -sh dist
+
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: zhengwei-machinery
-          directory: .
-          # 静态站点无需构建
-          buildCommand: ""
-          # 输出目录为根目录
-          outputPath: "."
+          command: pages deploy dist --project-name=zhengwei-machinery --branch=main
