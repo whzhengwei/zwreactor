@@ -1,0 +1,58 @@
+name: Site health check
+
+# 真正的部署由 Cloudflare Workers Builds 的 Git 集成完成（Worker: zwreactor）。
+# 这里只做上线后的自检：站点是否可访问、sitemap 里每个页面是否都返回 200。
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for Cloudflare deploy
+        run: sleep 60
+
+      - name: Crawl sitemap and report broken pages
+        run: |
+          python3 - <<'PY'
+          import re, time, urllib.request, urllib.error
+
+          BASE = "https://zhengweireactor.com"
+          def fetch(url):
+              req = urllib.request.Request(url, headers={"User-Agent": "site-check"})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      return r.status, r.read()
+              except urllib.error.HTTPError as e:
+                  return e.code, b""
+              except Exception as e:
+                  return None, str(e).encode()
+
+          status, body = fetch(BASE + "/sitemap.xml?cb=" + str(int(time.time())))
+          if status != 200:
+              print("sitemap.xml unreachable:", status)
+              raise SystemExit(1)
+          locs = re.findall(r"<loc>([^<]+)</loc>", body.decode("utf-8", "replace"))
+          print("sitemap entries:", len(locs))
+
+          bad = []
+          for u in locs:
+              s, b = fetch(u + ("&" if "?" in u else "?") + "cb=" + str(int(time.time())))
+              flag = "OK " if s == 200 else "BAD"
+              if s != 200:
+                  bad.append((s, u))
+              print(flag, s, u, len(b))
+          print()
+          print("broken:", len(bad))
+          for s, u in bad:
+              print("  ", s, u)
+          if bad:
+              raise SystemExit(1)
+          print("ALL PAGES OK")
+          PY
