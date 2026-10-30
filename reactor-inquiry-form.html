@@ -145,6 +145,120 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
   .form-row { grid-template-columns: 1fr; }
 }
 </style>
+<style id="site-footer-css">
+
+/* ---- Site footer: mirrors css/style.css exactly, scoped under .footer so it cannot
+        affect the inquiry form's own blue theme (this page does not load style.css) ---- */
+.footer {
+  --hull: #0a1628;
+  --copper: #c87941;
+  --copper-light: #d4955c;
+  --white: #ffffff;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--hull);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 72px 0 0;
+  position: relative;
+  font-size: 16px;
+}
+
+.footer a { text-decoration: none; }
+
+.footer ul { list-style: none; margin: 0; padding: 0; }
+
+.footer .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--copper), transparent);
+  opacity: 0.3;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-logo { margin-bottom: 16px; }
+
+.footer h4 {
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer p,
+.footer address {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  font-style: normal;
+}
+
+.footer ul li { margin-bottom: 10px; }
+
+.footer ul a {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.88rem;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer ul a::before {
+  content: '\203A';
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all var(--transition);
+  color: var(--copper);
+}
+
+.footer ul a:hover {
+  color: var(--white);
+  transform: translateX(4px);
+}
+
+.footer ul a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-bottom {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer .container { padding: 0 16px; }
+}
+
+@media print {
+  .footer { display: none; }
+}
+
+</style>
 </head>
 <body>
 
