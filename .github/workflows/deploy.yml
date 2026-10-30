@@ -35,46 +35,34 @@ jobs:
           find dist -type f | wc -l
           du -sh dist
 
-      - name: Whoami (diagnostic)
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: whoami
-
-      - name: List Pages projects (diagnostic)
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages project list
-
-      - name: List Workers (diagnostic)
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deployments list
-
       - name: Cloudflare inventory (diagnostic)
+        continue-on-error: true
         env:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          echo "=== zones visible to this token ==="
-          curl -s -H "Authorization: Bearer $CF_TOKEN" \
-            "https://api.cloudflare.com/client/v4/zones?per_page=50" \
-            | python3 -c "import sys,json;d=json.load(sys.stdin);print('success:',d.get('success'),d.get('errors'));[print(z['name'],'| zone_id',z['id'],'| account',z['account']['id'],z['account']['name']) for z in d.get('result',[])]"
-          echo "=== pages projects (secret account id) ==="
-          curl -s -H "Authorization: Bearer $CF_TOKEN" \
-            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects?per_page=50" \
-            | head -c 1200
-          echo
-          echo "=== workers scripts (secret account id) ==="
-          curl -s -H "Authorization: Bearer $CF_TOKEN" \
-            "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/workers/scripts" \
-            | head -c 1200
-          echo
+          python3 - <<'PY'
+          import os, json, urllib.request
+          tok = os.environ["CF_TOKEN"]
+          acct = os.environ["CF_ACCOUNT"]
+          def get(path):
+              req = urllib.request.Request("https://api.cloudflare.com/client/v4" + path,
+                                           headers={"Authorization": "Bearer " + tok})
+              try:
+                  return json.load(urllib.request.urlopen(req, timeout=30))
+              except Exception as e:
+                  return {"error": str(e)}
+          print("=== ZONES ===")
+          z = get("/zones?per_page=50")
+          for r in (z.get("result") or []):
+              print(r["name"], "| zone", r["id"], "| account", r["account"]["id"], r["account"]["name"])
+          if z.get("error"):
+              print("zones error:", z["error"])
+          print("=== PAGES PROJECTS ===")
+          print(json.dumps(get("/accounts/" + acct + "/pages/projects?per_page=50"), indent=1)[:1500])
+          print("=== WORKERS SCRIPTS ===")
+          print(json.dumps(get("/accounts/" + acct + "/workers/scripts"), indent=1)[:1500])
+          PY
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
