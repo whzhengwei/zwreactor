@@ -2,7 +2,7 @@ Reactor Specifications:
 - Pressure: Up to 10 MPa
 - Volume: 1L to 50,000L  
 - Materials: 316L, Hastelloy, Titanium, Zirconium
-- Certification: ASME U Stamp, ISO 9001
+- Certification: ASME U Complying, ISO 9001,ISO 14001,ISO 45001
 - Applications: Pharmaceutical, Chemical, Food Processing
 
 Key Features:
