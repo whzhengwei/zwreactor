@@ -28,11 +28,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="keywords" content="reactor quote, chemical reactor contact, hydrogenation reactor inquiry, magnetic coupling reactor supplier">
 <meta name="author" content="WEIHAI ZHENGWEI MACHINERY CO.,LTD">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://zhengweireactor.com/reactor-inquiry-form">
+<link rel="canonical" href="https://zhengweireactor.com/inquiry">
 <meta property="og:title" content="Contact WEIHAI ZHENGWEI MACHINERY CO.,LTD — Get a Reactor Quote">
 <meta property="og:description" content="Send us your process conditions and we'll respond within 24 hours with a technical review and quotation.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://zhengweireactor.com/reactor-inquiry-form">
+<meta property="og:url" content="https://zhengweireactor.com/inquiry">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -89,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="cases.html" class="nav-link">Cases</a>
       <a href="sustainability.html" class="nav-link">Sustainability</a>
       <a href="contact.html" class="nav-link active">Contact</a>
-      <a href="reactor-inquiry-form.html" class="nav-link nav-cta">Get a Quote</a>
+      <a href="inquiry.html" class="nav-link nav-cta">Get a Quote</a>
     </nav>
 <div class="nav-backdrop"></div>
   </div>
@@ -136,10 +136,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3>Send Us an Inquiry</h3>
         <p style="color:var(--gray-500);margin-bottom:24px;font-size:0.9rem;">The more detail you provide about your process conditions, the more accurate our quotation will be. Fields marked * are required.</p>
         
-        <form action="https://formspree.io/f/xdeeekej" method="POST">
-          <!-- Formspree requires a numeric "verify" field (0-100) on every submission.
-               Omitting it makes the endpoint return 422 REQUIRED_FIELD_MISSING. -->
-          <input type="hidden" name="verify" value="1">
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="67ad3cc2-e28d-49b6-9799-de3741598d85">
+          <!-- Redirect to thank-you page after submission -->
+          <input type="hidden" name="redirect" value="thanks.html">
+          <!-- Honeypot spam protection -->
+          <input type="checkbox" name="botcheck" style="display:none;">
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name *</label>
